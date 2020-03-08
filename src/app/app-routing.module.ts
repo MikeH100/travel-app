@@ -25,7 +25,7 @@ export const appRoutes: Routes = [
     loadChildren: 'src/app/homepage/homepage.module#HomepageModule',
     canActivate: [AngularFireAuthGuard],
     data: {
-      title: 'Calculator',
+      title: 'Homepage',
     }
   },
   { path: '**',
