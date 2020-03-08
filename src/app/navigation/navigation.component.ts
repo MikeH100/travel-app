@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationComponent implements OnInit {
   public links: Array<{ text: string, path: string }> = [];
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
     this.links.push(
