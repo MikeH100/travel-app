@@ -1,0 +1,6 @@
+<header>
+  <div class="header-wrapper">
+    <div class="logo">travel app</div>
+    <button *ngIf="authService.userDetails != null" (click)="authService.logout();" mat-flat-button color="primary">Logout</button>
+  </div>
+</header>

@@ -1,0 +1,19 @@
+header {
+  height: var(--header-height);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: var(--white);
+  z-index: 999;
+}
+
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+
+  .logo {
+    margin-top: 7px;
+  }
+}

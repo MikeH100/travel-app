@@ -1,0 +1,5 @@
+<div class="login-page">
+  <div class="button-wrapper">
+    <button *ngIf="authService.userDetails === null" (click)="onSubmit()" mat-flat-button color="primary">Login</button>
+  </div>
+<div>

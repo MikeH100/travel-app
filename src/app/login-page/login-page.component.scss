@@ -1,0 +1,16 @@
+.login-page {
+  position: relative;
+  height: 100%;
+
+  .button-wrapper {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    width: 165px;
+
+    button + button {
+      margin-left:20px;
+    }
+  }
+}

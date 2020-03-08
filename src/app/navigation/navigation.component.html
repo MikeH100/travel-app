@@ -1,0 +1,10 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened>
+    <div *ngFor="let link of links">
+      <button mat-button [routerLink]="link.path" color="primary">{{ link.text }}</button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
