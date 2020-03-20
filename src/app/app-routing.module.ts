@@ -5,6 +5,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 export const appRoutes: Routes = [
+  { path: '',
+    redirectTo: '/homepage',
+    pathMatch: 'full'
+  },
   { path: 'login',
     component: LoginPageComponent,
     data: { title: 'Login page' }
