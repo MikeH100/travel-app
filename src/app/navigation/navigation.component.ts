@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -9,13 +10,12 @@ export class NavigationComponent implements OnInit {
   public links: Array<{ text: string, path: string }> = [];
 
   constructor(
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
     this.links.push(
-      { text: 'Main page', path: 'main-page' },
       { text: 'Homepage', path: 'homepage' },
-      { text: 'Login', path: 'login' }
     );
   }
 

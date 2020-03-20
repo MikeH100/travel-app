@@ -6,7 +6,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { MainPageComponent } from './main-page/main-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthService } from './auth/auth.service';
@@ -29,7 +28,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     LoginPageComponent,
-    MainPageComponent,
     PageNotFoundComponent,
     HeaderComponent,
     NavigationComponent,
