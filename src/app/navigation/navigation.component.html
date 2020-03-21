@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" [opened]="authService.userDetails !== null">
+  <mat-sidenav mode="side" [opened]="opened">
     <div *ngFor="let link of links">
       <button mat-button [routerLink]="link.path" color="primary">{{ link.text }}</button>
     </div>

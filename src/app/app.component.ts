@@ -7,10 +7,13 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-
+  menuToggled: boolean;
   constructor(
   ) {}
 
   title = 'travel-app';
 
+  menuToggleChanged(menuToggled: boolean) {
+    this.menuToggled = menuToggled;
+  }
 }

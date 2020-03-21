@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -7,7 +7,8 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  @Output() menuToggle: EventEmitter<boolean> = new EventEmitter()
+  opened = false;
   constructor(
     private authService: AuthService,
   ) { }
@@ -15,4 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  menuButtonClicked() {
+    this.menuToggle.emit(this.opened);
+  }
 }

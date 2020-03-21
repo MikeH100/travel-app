@@ -1,5 +1,6 @@
 <header>
   <div class="header-wrapper">
+    <mat-checkbox class="checkbox" *ngIf="authService.userDetails != null" [(ngModel)]="opened" (click)="menuButtonClicked()">Toggle Menu</mat-checkbox>
     <div class="logo"><a routerLink="/homepage">travel app</a></div>
     <button *ngIf="authService.userDetails != null" (click)="authService.logout();" mat-flat-button color="primary">Logout</button>
   </div>

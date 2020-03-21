@@ -38,3 +38,7 @@ body {
   background-color: var(--white);
   border-top: 1px solid rgb(221, 221, 221);
 }
+
+.mat-checkbox-inner-container {
+  border: 1px solid;
+}

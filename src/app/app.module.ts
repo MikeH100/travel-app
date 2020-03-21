@@ -15,6 +15,8 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfigSettings } from '../firebase-config';
@@ -43,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireDatabaseModule,
     MatButtonModule,
     MatInputModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
     FormsModule,

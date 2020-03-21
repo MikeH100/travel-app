@@ -1,2 +1,2 @@
-<app-header></app-header>
-<app-navigation></app-navigation>
+<app-header (menuToggle)="menuToggleChanged($event)"></app-header>
+<app-navigation [menuToggled]="menuToggled"></app-navigation>
