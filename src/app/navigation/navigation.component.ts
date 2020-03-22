@@ -8,7 +8,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class NavigationComponent implements OnInit {
   public links: Array<{ text: string, path: string }> = [];
-  public opened: boolean;
+  public opened = false;
   public _menuToggled: string;
 
   @Input()
@@ -16,10 +16,8 @@ export class NavigationComponent implements OnInit {
     return this._menuToggled;
   }
   public set menuToggled(value: string) {
-    if(this.opened) {
-      this.opened = false;
-    } else {
-      this.opened = true;
+    if(this.authService.userDetails !== null) {
+      this.opened = value ? false : true;
     }
   }
 
@@ -29,11 +27,15 @@ export class NavigationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.authService.userDetails !== null) {
-      this.opened = true;
-    } else {
-      this.opened = false;
-    }
+    this.authService.user.subscribe(
+      (user) => {
+        if (user) {
+          this.opened = true;
+        } else {
+          this.opened = false;
+        }
+      }
+    );
     this.links.push(
       { text: 'Homepage', path: 'homepage' },
     );

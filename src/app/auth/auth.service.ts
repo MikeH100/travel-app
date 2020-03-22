@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private user: Observable<firebase.User>;
+  public user: Observable<firebase.User>;
   public userDetails: firebase.User = null;
 
   constructor(

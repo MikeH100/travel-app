@@ -14,6 +14,6 @@ export class AppComponent {
   title = 'travel-app';
 
   menuToggleChanged(menuToggled: boolean) {
-    this.menuToggled = menuToggled;
+    this.menuToggled = menuToggled ? false : true;
   }
 }

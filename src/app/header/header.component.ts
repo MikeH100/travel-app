@@ -8,7 +8,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() menuToggle: EventEmitter<boolean> = new EventEmitter()
-  opened = false;
+  opened = true;
   constructor(
     private authService: AuthService,
   ) { }
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   }
 
   menuButtonClicked() {
+    this.opened = this.opened ? false : true
     this.menuToggle.emit(this.opened);
   }
 }
