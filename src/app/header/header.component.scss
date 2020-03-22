@@ -20,5 +20,19 @@ header {
       text-decoration: none;
     }
   }
+
+  .user-profile {
+    display: flex;
+    cursor: pointer;
+    img {
+      width: 40px;
+      border-radius: 30px;
+    }
+
+    .display-name {
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+  }
 }
 

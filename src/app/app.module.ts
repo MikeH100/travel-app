@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatCheckboxModule,
     MatIconModule,
+    MatMenuModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
     FormsModule,

@@ -4,6 +4,14 @@
       <mat-icon *ngIf="authService.userDetails != null" (click)="menuButtonClicked()">menu</mat-icon>
     </button>
       <div class="logo"><a routerLink="/homepage">travel app</a></div>
-    <button *ngIf="authService.userDetails != null" (click)="authService.logout();" mat-flat-button color="primary">Logout</button>
+      <div>
+        <div class="user-profile" *ngIf="authService.userDetails != null" [matMenuTriggerFor]="menu">
+          <img [src]="authService.userDetails.photoURL">
+          <span class="display-name">{{authService.userDetails.displayName}}</span>
+        </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="authService.logout();">Logout</button>
+        </mat-menu>
+      </div>
   </div>
 </header>
