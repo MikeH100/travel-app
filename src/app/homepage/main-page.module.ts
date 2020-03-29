@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { homepageRoutes } from './homepage.routes';
+import { mainpageRoutes } from './main-page.routes';
 import { HomepageScreenComponent } from './homepage-screen/homepage-screen.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { HomePageService } from './homepage.service';
+import { MainPageService } from './main-page.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
-    HomepageScreenComponent
+    HomepageScreenComponent,
+    ProfilePageComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(homepageRoutes),
+    RouterModule.forChild(mainpageRoutes),
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
@@ -24,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    HomePageService
+    MainPageService
   ]
 })
-export class HomepageModule { }
+export class MainpageModule { }

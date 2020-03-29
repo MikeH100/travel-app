@@ -9,7 +9,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthService } from './auth/auth.service';
-import { HomepageModule } from './homepage/homepage.module';
+import { MainpageModule } from './homepage/main-page.module';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
@@ -43,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    HomepageModule,
+    MainpageModule,
     AngularFireDatabaseModule,
     MatButtonModule,
     MatInputModule,

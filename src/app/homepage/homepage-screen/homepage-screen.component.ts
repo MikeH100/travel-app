@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomePageService } from '../homepage.service';
+import { MainPageService } from '../main-page.service';
 
 @Component({
   selector: 'app-homepage-screen',
@@ -8,7 +8,7 @@ import { HomePageService } from '../homepage.service';
 })
 export class HomepageScreenComponent implements OnInit {
 
-  constructor(public homepage: HomePageService) { }
+  constructor(public homepage: MainPageService) { }
 
   ngOnInit() {
   }
