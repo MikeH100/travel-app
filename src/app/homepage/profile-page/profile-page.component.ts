@@ -9,7 +9,7 @@ import { AuthService } from '../../auth/auth.service';
 export class ProfilePageComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
   ) { }
 
   ngOnInit(): void {

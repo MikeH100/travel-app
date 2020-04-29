@@ -9,6 +9,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ja": "src/locale/messages.ja.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -29,6 +35,13 @@
             "scripts": []
           },
           "configurations": {
+            "ja": {
+              "aot": true,
+              "i18nFile": "src/translate/messages.ja.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "ja",
+              "i18nMissingTranslation": "error"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -63,6 +76,9 @@
           "configurations": {
             "production": {
               "browserTarget": "receipt-app:build:production"
+            },
+            "ja": {
+              "browserTarget": "receipt-app:build:ja"
             }
           }
         },

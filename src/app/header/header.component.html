@@ -3,7 +3,7 @@
     <button mat-icon-button>
       <mat-icon *ngIf="authService.userDetails != null" (click)="menuButtonClicked()">menu</mat-icon>
     </button>
-      <div class="logo"><a routerLink="/homepage">travel app</a></div>
+      <div class="logo"><a routerLink="/homepage" i18n="site header logo|The text for the logo">travel app</a></div>
       <div>
         <div class="user-profile" *ngIf="authService.userDetails != null" [matMenuTriggerFor]="menu">
           <img [src]="authService.userDetails.photoURL">

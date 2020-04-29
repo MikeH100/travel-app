@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   @Output() menuToggle: EventEmitter<boolean> = new EventEmitter()
   opened = true;
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
