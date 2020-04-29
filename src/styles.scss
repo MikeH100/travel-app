@@ -1,8 +1,11 @@
-@import '@angular/material/prebuilt-themes/purple-green.css';
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/icon?family=Roboto';
 
+@import '~@angular/material/theming';
+@import './theme.scss';
+
 :root {
+  --main-color: #607d8b;
   --gray: rgb(194, 194, 194);
   --white: white;
   --font-family-sans-serif: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -28,10 +31,6 @@ body {
 
 .mat-form-field-underline {
   background-color: var(--gray) !important;
-}
-
-.mat-drawer-content {
-  background-color: var(--gray);
 }
 
 .mat-sidenav {

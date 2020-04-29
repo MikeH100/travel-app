@@ -1,13 +1,13 @@
 <div class="user-profile">
   <img [src]="authService.userDetails.photoURL">
 
-  <mat-form-field class="field">
+  <mat-form-field appearance="fill">
     <mat-label>{{authService.userDetails.displayName}}</mat-label>
-    <input matInput>
+    <input [disabled]="true" matInput>
   </mat-form-field>
   <br>
-  <mat-form-field class="field">
+  <mat-form-field appearance="fill">
     <mat-label>{{authService.userDetails.email}}</mat-label>
-    <input matInput>
+    <input [disabled]="true" matInput>
   </mat-form-field>
 </div>
