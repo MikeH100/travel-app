@@ -38,6 +38,8 @@ export class NavigationComponent implements OnInit {
     );
     this.links.push(
       { text: 'Homepage', path: 'homepage' },
+      { text: 'Follow page', path: 'homepage/follow' },
+
     );
   }
 

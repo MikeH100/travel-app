@@ -8,13 +8,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MainPageService } from './main-page.service';
+import { FollowService } from './follow-users-page/service/follow.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { FollowerPageComponent } from './follow-users-page/follower-page.component';
 
 @NgModule({
   declarations: [
     HomepageScreenComponent,
     ProfilePageComponent,
+    FollowerPageComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     HttpClientModule
   ],
   providers: [
-    MainPageService
+    MainPageService,
+    FollowService
   ]
 })
 export class MainpageModule { }
