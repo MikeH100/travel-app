@@ -1,1 +1,2 @@
-<p>follower-page works!</p>
+You are logged in as <strong>{{authService.userDetails?.displayName }}</strong><hr>
+<div *ngFor="let user of users;">{{user.name}}</div>
