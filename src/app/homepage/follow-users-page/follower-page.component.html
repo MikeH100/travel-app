@@ -1,2 +1,19 @@
-You are logged in as <strong>{{authService.userDetails?.displayName }}</strong><hr>
-<div *ngFor="let user of users;">{{user.name}}</div>
+You are logged in as <strong>{{currentUser.displayName }}</strong><hr>
+<div *ngFor="let user of users;">
+  <div class="profile">
+    <img [src]="user.img" width="50px">
+    @{{user.name}} has <strong>{{followerCount}}</strong> followers
+    <div *ngIf="isFollowingUser(user.uid); then unfollowButton else followButton">
+        button renders here
+    </div>
+  </div>
+
+  <ng-template #followButton>
+    <button class="button is-info" (click)="toggleFollow(user)">Follow</button>
+  </ng-template>
+
+  <ng-template #unfollowButton>
+    <button class="button is-warning" (click)="toggleFollow(user)">Unfollow</button>
+  </ng-template>
+
+</div>
