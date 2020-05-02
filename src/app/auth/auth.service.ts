@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ export class AuthService {
 
   constructor(
     public firebaseAuth: AngularFireAuth,
-    public router: Router) {
+    public router: Router,
+    private firestore: AngularFirestore
+    ) {
       this.user = firebaseAuth.authState;
       this.user.subscribe(
         (user) => {
@@ -27,9 +30,27 @@ export class AuthService {
     }
 
   signInWithGoogle() {
-    return this.firebaseAuth.auth.signInWithPopup(
-      new firebase.auth.GoogleAuthProvider()
-    );
+    return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((result) => {
+      if (result.additionalUserInfo.isNewUser) {
+        return new Promise<any>((resolve, reject) =>{
+          this.firestore
+          .collection('users')
+          .add({
+            name: result.user.displayName,
+            uid: result.user.uid
+          })
+          .then((resultFromDb) => {
+            resolve(resultFromDb);
+          }).catch((error) => {
+            reject(error);
+          });
+        });
+      } else {
+        return result
+      }
+    }).catch((error) => {
+      return error
+    });
   }
 
   logout() {
