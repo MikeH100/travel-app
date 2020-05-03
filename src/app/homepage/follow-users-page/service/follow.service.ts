@@ -49,10 +49,11 @@ export class FollowService {
     });
   }
 
-  getDocumentIdToRemoveFollowing(followerId: string, followedId: string): Observable<any> {
+  getDocumentIdToRemoveFollower(id1: string, id2: string, followType: string, databaseId: string): Observable<any> {
+    console.log(id1, id2);
       return this.firestore
       .collection('follow')
-      .doc(followerId).collection('following', ref => ref.where('followedId', '==', followedId)).snapshotChanges().pipe(
+      .doc(id1).collection(followType, ref => ref.where(databaseId, '==', id2)).snapshotChanges().pipe(
         catchError(err => { throw new Error(err.error); }),
         map((resp) => {
           return resp;
@@ -60,9 +61,9 @@ export class FollowService {
       );
   }
 
-  public removeFollowingFromFirebase(followerId, docId) {
+  public removeFollowerFromFirebase(followerId: string, docId: string, followType: string) {
     return new Promise<any>((resolve, reject) =>{
-      this.firestore.collection('follow').doc(followerId).collection('following').doc(docId).delete().then((data) => {
+      this.firestore.collection('follow').doc(followerId).collection(followType).doc(docId).delete().then((data) => {
         resolve(data);
       }).catch((error) => {
         reject(error);
