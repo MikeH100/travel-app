@@ -10,7 +10,6 @@ import { catchError, map } from 'rxjs/operators';
 export class FollowService {
   public items: Observable<any[]>;
   public followingUsers: Observable<any[]>;
-  public test: Observable<any[]>;
 
   constructor(private db: AngularFireDatabase,
     private firestore: AngularFirestore) { }

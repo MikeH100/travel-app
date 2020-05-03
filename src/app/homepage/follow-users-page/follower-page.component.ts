@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { FollowService } from './service/follow.service';
 import { Subscription } from 'rxjs';
@@ -9,8 +9,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./follower-page.component.scss']
 })
 export class FollowerPageComponent implements OnInit {
-  public users;
-  public currentUser
+  public users: any;
+  public currentUser: any;
   public followerCount: number;
   public isFollowing: boolean;
   public following = [];
