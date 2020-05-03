@@ -12,6 +12,7 @@ export class PostPageComponent implements OnInit {
   public postContent = '';
   public currentUser: any;
   private getDocumentIdSubscribtion: Subscription;
+  public currentPostData = [];
 
   constructor(
     public authService: AuthService,
@@ -20,6 +21,7 @@ export class PostPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.userDetails;
+    this.getPostsCurrentUser();
   }
 
   public onSubmit(): void {
@@ -32,6 +34,18 @@ export class PostPageComponent implements OnInit {
         this.getDocumentIdSubscribtion.unsubscribe();
       }
     });
+  }
 
+  public getPostsCurrentUser(): void {
+    this.getDocumentIdSubscribtion = this.postPageservice.getDocumentIdToAddPosts(this.currentUser.uid).subscribe(data => {
+      if(data.length !== 0) {
+        data.forEach(value => {
+          this.postPageservice.getPostForCurrentUser(value.payload.doc.id).subscribe(postData => {
+            this.currentPostData = postData;
+          });
+        });
+        this.getDocumentIdSubscribtion.unsubscribe();
+      }
+    });
   }
 }

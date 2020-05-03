@@ -18,7 +18,7 @@ export class PostPageService {
       if(docId) {
         this.firestore
         .collection('users').doc(docId).collection('posts').add({
-          'post-content': postContent,
+          postContent,
           uid: userId
         }).then((result) => {
           resolve(result)
@@ -28,7 +28,7 @@ export class PostPageService {
       } else {
         this.firestore
         .collection('posts').add({
-          'post-content': postContent,
+          postContent,
           uid: userId
         }).then((result) => {
           resolve(result)
@@ -47,5 +47,14 @@ export class PostPageService {
         return resp;
       })
     );
+  }
+
+  getPostForCurrentUser(docId: string): Observable<any> {
+    return this.firestore.collection('users').doc(docId).collection('posts').valueChanges().pipe(
+      catchError(err => { throw new Error(err.error); }),
+      map((resp) => {
+        return resp;
+      })
+    );;
   }
 }
