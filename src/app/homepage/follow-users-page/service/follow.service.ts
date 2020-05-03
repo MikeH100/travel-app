@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -48,13 +49,18 @@ export class FollowService {
     });
   }
 
-  unfollow(followerId: string, followedId: string) {
+  getDocumentIdToRemoveFollowing(followerId: string, followedId: string): Observable<any> {
       return this.firestore
       .collection('follow')
-      .doc(followerId).collection('following', ref => ref.where('followedId', '==', followedId)).snapshotChanges();
+      .doc(followerId).collection('following', ref => ref.where('followedId', '==', followedId)).snapshotChanges().pipe(
+        catchError(err => { throw new Error(err.error); }),
+        map((resp) => {
+          return resp;
+        })
+      );
   }
 
-  public removeFollowerFromFirebase(followerId, docId) {
+  public removeFollowingFromFirebase(followerId, docId) {
     return new Promise<any>((resolve, reject) =>{
       this.firestore.collection('follow').doc(followerId).collection('following').doc(docId).delete().then((data) => {
         resolve(data);

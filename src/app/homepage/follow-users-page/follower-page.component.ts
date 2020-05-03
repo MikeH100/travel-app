@@ -14,7 +14,7 @@ export class FollowerPageComponent implements OnInit, OnDestroy {
   public followerCount: number;
   public isFollowing: boolean;
   public following = [];
-  private paramsSubscription: Subscription;
+  private followingSubscription: Subscription;
   constructor(
     public authService: AuthService,
     public followService: FollowService
@@ -42,10 +42,12 @@ export class FollowerPageComponent implements OnInit, OnDestroy {
     const userId = user.uid
     const currentUserId = this.currentUser.uid
     if (this.isFollowingUser(userId)) {
-      this.paramsSubscription = this.followService.unfollow(currentUserId, userId).subscribe(data => {
-        if(data[0]) {
-          this.followService.removeFollowerFromFirebase(currentUserId, data[0].payload.doc.id).then(data => {});
-          this.paramsSubscription.unsubscribe();
+      this.followingSubscription = this.followService.getDocumentIdToRemoveFollowing(currentUserId, userId).subscribe(data => {
+        if(data.length !== 0) {
+          data.forEach(value => {
+            this.followService.removeFollowingFromFirebase(currentUserId, value.payload.doc.id).then(data => {});
+          });
+          this.followingSubscription.unsubscribe();
         }
       });
     } else {
@@ -55,6 +57,6 @@ export class FollowerPageComponent implements OnInit, OnDestroy {
 
 
   public ngOnDestroy() {
-    this.paramsSubscription.unsubscribe();
+    this.followingSubscription.unsubscribe();
   }
 }
