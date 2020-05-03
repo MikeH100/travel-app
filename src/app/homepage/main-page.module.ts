@@ -9,15 +9,18 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MainPageService } from './main-page.service';
 import { FollowService } from './follow-users-page/service/follow.service';
+import { PostPageService } from './post-page/service/post-page.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { FollowerPageComponent } from './follow-users-page/follower-page.component';
+import { PostPageComponent } from './post-page/post-page.component';
 
 @NgModule({
   declarations: [
     HomepageScreenComponent,
     ProfilePageComponent,
     FollowerPageComponent,
+    PostPageComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,8 @@ import { FollowerPageComponent } from './follow-users-page/follower-page.compone
   ],
   providers: [
     MainPageService,
-    FollowService
+    FollowService,
+    PostPageService
   ]
 })
 export class MainpageModule { }

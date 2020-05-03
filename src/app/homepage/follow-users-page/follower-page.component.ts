@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './follower-page.component.html',
   styleUrls: ['./follower-page.component.scss']
 })
-export class FollowerPageComponent implements OnInit, OnDestroy {
+export class FollowerPageComponent implements OnInit {
   public users;
   public currentUser
   public followerCount: number;
@@ -65,11 +65,5 @@ export class FollowerPageComponent implements OnInit, OnDestroy {
     } else {
       this.followService.follow(currentUserId, userId).then(data => {});
     }
-  }
-
-
-  public ngOnDestroy() {
-    this.followingSubscription.unsubscribe();
-    this.followerSubscription.unsubscribe();
   }
 }
