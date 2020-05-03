@@ -13,17 +13,39 @@ export class PostPageService {
     private firestore: AngularFirestore
   ) { }
 
-  postContentToFirebase(postContent: string, userId: string) {
+  postContentToFirebase(postContent: string, userId: string, docId?: string) {
     return new Promise<any>((resolve, reject) =>{
-      this.firestore
-      .collection('posts').add({
-        'post-content': postContent,
-        uid: userId
-      }).then((result) => {
-        console.log('posted');
-      }).catch((error) => {
-        reject(error);
-      });;
+      if(docId) {
+        this.firestore
+        .collection('users').doc(docId).collection('posts').add({
+          'post-content': postContent,
+          uid: userId
+        }).then((result) => {
+          resolve(result)
+        }).catch((error) => {
+          reject(error);
+        });
+      } else {
+        this.firestore
+        .collection('posts').add({
+          'post-content': postContent,
+          uid: userId
+        }).then((result) => {
+          resolve(result)
+        }).catch((error) => {
+          reject(error);
+        });
+      }
     });
+  }
+
+  getDocumentIdToAddPosts(userId: string): Observable<any> {
+    return this.firestore
+    .collection('users', ref => ref.where('uid', '==', userId )).snapshotChanges().pipe(
+      catchError(err => { throw new Error(err.error); }),
+      map((resp) => {
+        return resp;
+      })
+    );
   }
 }

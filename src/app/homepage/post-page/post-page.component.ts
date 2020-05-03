@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostPageService } from './service/post-page.service';
 import { AuthService } from '../../auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-page',
@@ -10,6 +11,7 @@ import { AuthService } from '../../auth/auth.service';
 export class PostPageComponent implements OnInit {
   public postContent = '';
   public currentUser: any;
+  private getDocumentIdSubscribtion: Subscription;
 
   constructor(
     public authService: AuthService,
@@ -22,5 +24,14 @@ export class PostPageComponent implements OnInit {
 
   public onSubmit(): void {
     this.postPageservice.postContentToFirebase(this.postContent, this.currentUser.uid);
+    this.getDocumentIdSubscribtion = this.postPageservice.getDocumentIdToAddPosts(this.currentUser.uid).subscribe(data => {
+      if(data.length !== 0) {
+        data.forEach(value => {
+          this.postPageservice.postContentToFirebase(this.postContent, this.currentUser.uid, value.payload.doc.id);
+        });
+        this.getDocumentIdSubscribtion.unsubscribe();
+      }
+    });
+
   }
 }

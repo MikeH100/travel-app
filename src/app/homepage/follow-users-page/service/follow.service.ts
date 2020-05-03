@@ -49,15 +49,14 @@ export class FollowService {
   }
 
   getDocumentIdToRemoveFollower(id1: string, id2: string, followType: string, databaseId: string): Observable<any> {
-    console.log(id1, id2);
-      return this.firestore
-      .collection('follow')
-      .doc(id1).collection(followType, ref => ref.where(databaseId, '==', id2)).snapshotChanges().pipe(
-        catchError(err => { throw new Error(err.error); }),
-        map((resp) => {
-          return resp;
-        })
-      );
+    return this.firestore
+    .collection('follow')
+    .doc(id1).collection(followType, ref => ref.where(databaseId, '==', id2)).snapshotChanges().pipe(
+      catchError(err => { throw new Error(err.error); }),
+      map((resp) => {
+        return resp;
+      })
+    );
   }
 
   public removeFollowerFromFirebase(followerId: string, docId: string, followType: string) {
