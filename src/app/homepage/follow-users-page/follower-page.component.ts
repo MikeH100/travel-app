@@ -45,7 +45,7 @@ export class FollowerPageComponent implements OnInit, OnDestroy {
       this.followingSubscription = this.followService.getDocumentIdToRemoveFollowing(currentUserId, userId).subscribe(data => {
         if(data.length !== 0) {
           data.forEach(value => {
-            this.followService.removeFollowingFromFirebase(currentUserId, value.payload.doc.id).then(data => {});
+            this.followService.removeFollowingFromFirebase(currentUserId, value.payload.doc.id).then();
           });
           this.followingSubscription.unsubscribe();
         }

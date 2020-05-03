@@ -30,13 +30,13 @@ export class FollowService {
       this.firestore
       .collection('follow')
       .doc(followedId).collection('followers').add({
-        followerId: followerId,
+        followerId,
       })
       .then((resultFollower) => {
         this.firestore
         .collection('follow')
         .doc(followerId).collection('following').add({
-          followedId: followedId,
+          followedId,
         })
         .then((resultFollowed) => {
           resolve({resultFollower, resultFollowed});
