@@ -40,6 +40,7 @@ export class NavigationComponent implements OnInit {
       { text: 'Homepage', path: 'homepage' },
       { text: 'Follow page', path: 'homepage/follow' },
       { text: 'Post page', path: 'homepage/post' },
+      { text: 'Trending page', path: 'homepage/trending' },
     );
   }
 

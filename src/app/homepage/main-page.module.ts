@@ -15,6 +15,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { FollowerPageComponent } from './follow-users-page/follower-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { MatCardModule } from '@angular/material/card';
+import { TrendingPageComponent } from './trending-page/trending-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
     ProfilePageComponent,
     FollowerPageComponent,
     PostPageComponent,
+    TrendingPageComponent,
   ],
   imports: [
     CommonModule,
