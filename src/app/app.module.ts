@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -51,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatMenuModule,
     MatFormFieldModule,
+    MatCardModule,
     BrowserAnimationsModule,
     FormsModule,
     MatSidenavModule,
@@ -59,6 +61,9 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     AuthService,
     AngularFireAuthGuard
+  ],
+  exports: [
+    MatCardModule
   ],
   bootstrap: [AppComponent]
 })

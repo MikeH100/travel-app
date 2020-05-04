@@ -5,7 +5,7 @@ import { mainpageRoutes } from './main-page.routes';
 import { HomepageScreenComponent } from './homepage-screen/homepage-screen.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MainPageService } from './main-page.service';
 import { FollowService } from './follow-users-page/service/follow.service';
@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { FollowerPageComponent } from './follow-users-page/follower-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,10 @@ import { PostPageComponent } from './post-page/post-page.component';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [
     MainPageService,

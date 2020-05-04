@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostPageService } from './service/post-page.service';
 import { AuthService } from '../../auth/auth.service';
 import { Subscription } from 'rxjs';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-post-page',
@@ -14,6 +15,10 @@ export class PostPageComponent implements OnInit {
   public currentUser: any;
   private getDocumentIdSubscribtion: Subscription;
   public currentPostData = [];
+  public postForm = new FormGroup({
+    postContent: new FormControl(''),
+    tag: new FormControl(''),
+  });
 
   constructor(
     public authService: AuthService,
