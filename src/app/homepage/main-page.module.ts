@@ -16,6 +16,7 @@ import { FollowerPageComponent } from './follow-users-page/follower-page.compone
 import { PostPageComponent } from './post-page/post-page.component';
 import { MatCardModule } from '@angular/material/card';
 import { TrendingPageComponent } from './trending-page/trending-page.component';
+import { AllPostPageComponent } from './all-post-page/all-post-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TrendingPageComponent } from './trending-page/trending-page.component';
     FollowerPageComponent,
     PostPageComponent,
     TrendingPageComponent,
+    AllPostPageComponent,
   ],
   imports: [
     CommonModule,
