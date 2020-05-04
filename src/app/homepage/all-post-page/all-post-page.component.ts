@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AllPostsService } from './service/all-posts.service'
 import { Subscription } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-all-post-page',

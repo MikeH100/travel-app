@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostPageService } from './service/post-page.service';
+import { MainPageService } from '../main-page.service';
+
 import { AuthService } from '../../auth/auth.service';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -22,7 +24,8 @@ export class PostPageComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public postPageservice: PostPageService
+    public postPageservice: PostPageService,
+    public maingPageService: MainPageService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +36,7 @@ export class PostPageComponent implements OnInit {
   public onSubmit(): void {
     this.postPageservice.postContentToFirebase(this.postContent, this.tagField, this.currentUser.uid);
     this.postPageservice.postTagToFirebase(this.tagField, this.currentUser.uid);
-    this.getDocumentIdSubscribtion = this.postPageservice.getDocumentIdToAddPosts(this.currentUser.uid).subscribe(data => {
+    this.getDocumentIdSubscribtion = this.maingPageService.getDocumentIdUser(this.currentUser.uid).subscribe(data => {
       if(data.length !== 0) {
         data.forEach(value => {
           this.postPageservice.postContentToFirebase(this.postContent, this.tagField, this.currentUser.uid, value.payload.doc.id);
@@ -44,7 +47,7 @@ export class PostPageComponent implements OnInit {
   }
 
   public getPostsCurrentUser(): void {
-    this.getDocumentIdSubscribtion = this.postPageservice.getDocumentIdToAddPosts(this.currentUser.uid).subscribe(data => {
+    this.getDocumentIdSubscribtion = this.maingPageService.getDocumentIdUser(this.currentUser.uid).subscribe(data => {
       if(data.length !== 0) {
         data.forEach(value => {
           this.postPageservice.getPostForCurrentUser(value.payload.doc.id).subscribe(postData => {

@@ -55,15 +55,15 @@ export class PostPageService {
     });
   }
 
-  public getDocumentIdToAddPosts(userId: string): Observable<any> {
-    return this.firestore
-    .collection('users', ref => ref.where('uid', '==', userId )).snapshotChanges().pipe(
-      catchError(err => { throw new Error(err.error); }),
-      map((resp) => {
-        return resp;
-      })
-    );
-  }
+  // public getDocumentIdToAddPosts(userId: string): Observable<any> {
+  //   return this.firestore
+  //   .collection('users', ref => ref.where('uid', '==', userId )).snapshotChanges().pipe(
+  //     catchError(err => { throw new Error(err.error); }),
+  //     map((resp) => {
+  //       return resp;
+  //     })
+  //   );
+  // }
 
   public getPostForCurrentUser(docId: string): Observable<any> {
     return this.firestore.collection('users').doc(docId).collection('posts').valueChanges().pipe(
@@ -71,6 +71,6 @@ export class PostPageService {
       map((resp) => {
         return resp;
       })
-    );;
+    );
   }
 }

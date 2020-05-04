@@ -1,0 +1,11 @@
+<div *ngFor="let post of currentUserPostData;" class="post">
+  <mat-card>
+    {{post.postContent}}
+    <mat-card-footer>
+      <mat-card-subtitle class="tag">{{post.tag}}</mat-card-subtitle>
+    </mat-card-footer>
+  </mat-card>
+</div>
+
+<div *ngIf="currentUserPostData == undefined">User not found</div>
+
