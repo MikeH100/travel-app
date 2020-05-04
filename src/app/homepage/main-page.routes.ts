@@ -5,6 +5,7 @@ import { FollowerPageComponent } from './follow-users-page/follower-page.compone
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { PostPageComponent } from './post-page/post-page.component';
 import { TrendingPageComponent } from './trending-page/trending-page.component';
+import { AllPostPageComponent } from './all-post-page/all-post-page.component';
 
 export const mainpageRoutes: Routes = [
   {
@@ -46,5 +47,13 @@ export const mainpageRoutes: Routes = [
     data: {
       title: 'Trending page',
     }
-  }
+  },
+  {
+    path: 'all-posts',
+    component: TrendingPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      title: 'all posts page',
+    }
+  },
 ];

@@ -1,1 +1,3 @@
-<p>trending-page works!</p>
+<mat-action-list *ngFor="let topic of trendingTopics; let i = index">
+  <button mat-list-item>{{i + 1}} {{topic.tag}}</button>
+</mat-action-list>

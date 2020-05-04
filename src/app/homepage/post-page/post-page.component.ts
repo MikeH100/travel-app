@@ -31,12 +31,12 @@ export class PostPageComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.postPageservice.postContentToFirebase(this.postContent, this.currentUser.uid);
+    this.postPageservice.postContentToFirebase(this.postContent, this.tagField, this.currentUser.uid);
     this.postPageservice.postTagToFirebase(this.tagField, this.currentUser.uid);
     this.getDocumentIdSubscribtion = this.postPageservice.getDocumentIdToAddPosts(this.currentUser.uid).subscribe(data => {
       if(data.length !== 0) {
         data.forEach(value => {
-          this.postPageservice.postContentToFirebase(this.postContent, this.currentUser.uid, this.tagField, value.payload.doc.id);
+          this.postPageservice.postContentToFirebase(this.postContent, this.tagField, this.currentUser.uid, value.payload.doc.id);
         });
         this.getDocumentIdSubscribtion.unsubscribe();
       }

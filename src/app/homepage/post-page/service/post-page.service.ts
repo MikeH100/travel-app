@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-// import { firebase } from '@firebase/app';
 import * as firebase from 'firebase/app';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,13 +13,12 @@ export class PostPageService {
     private firestore: AngularFirestore
   ) { }
 
-  public postContentToFirebase(postContent: string, userId: string, tag?: string, docId?: string) {
+  public postContentToFirebase(postContent: string, tag: string, userId?: string, docId?: string) {
     return new Promise<any>((resolve, reject) =>{
       if(docId) {
         this.firestore
         .collection('users').doc(docId).collection('posts').add({
           postContent,
-          uid: userId,
           tag
         }).then((result) => {
           resolve(result)
@@ -31,7 +29,8 @@ export class PostPageService {
         this.firestore
         .collection('posts').add({
           postContent,
-          uid: userId
+          uid: userId,
+          tag
         }).then((result) => {
           resolve(result)
         }).catch((error) => {
