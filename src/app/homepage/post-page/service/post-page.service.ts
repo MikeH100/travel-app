@@ -55,7 +55,7 @@ export class PostPageService {
     });
   }
 
-  getDocumentIdToAddPosts(userId: string): Observable<any> {
+  public getDocumentIdToAddPosts(userId: string): Observable<any> {
     return this.firestore
     .collection('users', ref => ref.where('uid', '==', userId )).snapshotChanges().pipe(
       catchError(err => { throw new Error(err.error); }),
@@ -65,7 +65,7 @@ export class PostPageService {
     );
   }
 
-  getPostForCurrentUser(docId: string): Observable<any> {
+  public getPostForCurrentUser(docId: string): Observable<any> {
     return this.firestore.collection('users').doc(docId).collection('posts').valueChanges().pipe(
       catchError(err => { throw new Error(err.error); }),
       map((resp) => {

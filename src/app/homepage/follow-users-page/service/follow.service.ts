@@ -48,7 +48,7 @@ export class FollowService {
     });
   }
 
-  getDocumentIdToRemoveFollower(id1: string, id2: string, followType: string, databaseId: string): Observable<any> {
+  public getDocumentIdToRemoveFollower(id1: string, id2: string, followType: string, databaseId: string): Observable<any> {
     return this.firestore
     .collection('follow')
     .doc(id1).collection(followType, ref => ref.where(databaseId, '==', id2)).snapshotChanges().pipe(

@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FollowService } from './follow-users-page/service/follow.service';
 import { PostPageService } from './post-page/service/post-page.service';
 import { MainPageService } from './main-page.service';
+import { AllPostsService } from './all-post-page/service/all-posts.service'
 
 import { HomepageScreenComponent } from './homepage-screen/homepage-screen.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
@@ -46,7 +47,8 @@ import { PostPageComponent } from './post-page/post-page.component';
   providers: [
     MainPageService,
     FollowService,
-    PostPageService
+    PostPageService,
+    AllPostsService
   ]
 })
 export class MainpageModule { }

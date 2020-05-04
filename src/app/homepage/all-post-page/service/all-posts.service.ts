@@ -6,18 +6,18 @@ import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class MainPageService {
+export class AllPostsService {
 
   constructor(
     private firestore: AngularFirestore
   ) { }
 
-  public getTrendingTags(): Observable<any> {
-    return this.firestore.collection('tags', ref => ref.orderBy('count', 'desc')).valueChanges().pipe(
+  public getAllPosts(): Observable<any> {
+    return this.firestore.collection('posts').valueChanges().pipe(
       catchError(err => { throw new Error(err.error); }),
       map((resp) => {
         return resp;
       })
-    );;
+    );
   }
 }

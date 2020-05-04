@@ -9,12 +9,12 @@ import { AllPostPageComponent } from './all-post-page/all-post-page.component';
 
 export const mainpageRoutes: Routes = [
   {
-      path: '',
-      component: HomepageScreenComponent,
-      canActivate: [AngularFireAuthGuard],
-      data: {
-        title: 'Homepage',
-      }
+    path: '',
+    component: HomepageScreenComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      title: 'Homepage',
+    }
   },
   {
     path: 'profile',
@@ -50,7 +50,7 @@ export const mainpageRoutes: Routes = [
   },
   {
     path: 'all-posts',
-    component: TrendingPageComponent,
+    component: AllPostPageComponent,
     canActivate: [AngularFireAuthGuard],
     data: {
       title: 'all posts page',
