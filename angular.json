@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "receipt-app": {
+    "travel-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -19,7 +19,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/receipt-app",
+            "outputPath": "dist/travel-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,21 +71,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "receipt-app:build"
+            "browserTarget": "travel-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "receipt-app:build:production"
+              "browserTarget": "travel-app:build:production"
             },
             "ja": {
-              "browserTarget": "receipt-app:build:ja"
+              "browserTarget": "travel-app:build:ja"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "receipt-app:build"
+            "browserTarget": "travel-app:build"
           }
         },
         "test": {
@@ -122,18 +122,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "receipt-app:serve"
+            "devServerTarget": "travel-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "receipt-app:serve:production"
+              "devServerTarget": "travel-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "receipt-app",
+  "defaultProject": "travel-app",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"

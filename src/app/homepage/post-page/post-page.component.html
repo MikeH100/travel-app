@@ -7,7 +7,10 @@
     <mat-label>Textarea</mat-label>
     <textarea matInput [(ngModel)]="postContent"></textarea>
   </mat-form-field>
-
+  <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input [(ngModel)]="tagField" matInput>
+  </mat-form-field>
 </div>
 
 <button (click)="onSubmit()" mat-flat-button color="primary">Submit</button>

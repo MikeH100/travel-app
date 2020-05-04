@@ -3,7 +3,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-
+// import { firebase } from '@firebase/app';
+import * as firebase from 'firebase/app';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,13 +14,14 @@ export class PostPageService {
     private firestore: AngularFirestore
   ) { }
 
-  postContentToFirebase(postContent: string, userId: string, docId?: string) {
+  public postContentToFirebase(postContent: string, userId: string, tag?: string, docId?: string) {
     return new Promise<any>((resolve, reject) =>{
       if(docId) {
         this.firestore
         .collection('users').doc(docId).collection('posts').add({
           postContent,
-          uid: userId
+          uid: userId,
+          tag
         }).then((result) => {
           resolve(result)
         }).catch((error) => {
@@ -36,6 +38,21 @@ export class PostPageService {
           reject(error);
         });
       }
+    });
+  }
+
+  public postTagToFirebase(tag: string, uid: string) {
+    return new Promise<any>((resolve, reject) =>{
+        this.firestore
+        .collection('tags').doc(tag).set({
+          tag,
+          uid,
+          count: firebase.firestore.FieldValue.increment(1),
+        }, { merge: true }).then((result) => {
+          resolve(result)
+        }).catch((error) => {
+          reject(error);
+        });
     });
   }
 
