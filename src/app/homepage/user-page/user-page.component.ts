@@ -13,13 +13,14 @@ export class UserPageComponent implements OnInit {
   public uid: string;
   private getDocumentIdUserSubscribtion: Subscription;
   public currentUserPostData: any;
+
   constructor(
     private router: Router,
-    public maingPageService: MainPageService,
+    public mainPageService: MainPageService,
     public userPageService: UserPageService
   ) {
     const navigation = this.router.getCurrentNavigation();
-    this.uid = navigation.extras.state ? navigation.extras.state.orderId : undefined
+    this.uid = navigation.extras.state ? navigation.extras.state.userId : undefined
   }
 
   ngOnInit(): void {
@@ -32,10 +33,10 @@ export class UserPageComponent implements OnInit {
 
 
   public getPostsSelectedUser(): void {
-    this.getDocumentIdUserSubscribtion = this.maingPageService.getDocumentIdUser(this.uid).subscribe(data => {
+    this.getDocumentIdUserSubscribtion = this.mainPageService.getDocumentIdUser(this.uid).subscribe(data => {
       if(data.length !== 0) {
         data.forEach(value => {
-          this.maingPageService.getPostForSelectedUser(value.payload.doc.id).subscribe(postData => {
+          this.mainPageService.getPostForSelectedUser(value.payload.doc.id).subscribe(postData => {
             this.currentUserPostData = postData;
           });
         });

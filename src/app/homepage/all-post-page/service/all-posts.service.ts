@@ -20,13 +20,4 @@ export class AllPostsService {
       })
     );
   }
-
-  public getUserName(uid: string): Observable<any> {
-    return this.firestore.collection('users', ref => ref.where('uid', '==', uid)).valueChanges().pipe(
-      catchError(err => { throw new Error(err.error); }),
-      map((resp) => {
-        return resp;
-      })
-    );
-  }
 }

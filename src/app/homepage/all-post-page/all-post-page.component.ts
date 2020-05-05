@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AllPostsService } from './service/all-posts.service'
 import { Subscription } from 'rxjs';
-import { RouterModule } from '@angular/router';
-
+import { MainPageService } from '../main-page.service'
 @Component({
   selector: 'app-all-post-page',
   templateUrl: './all-post-page.component.html',
@@ -14,13 +13,14 @@ export class AllPostPageComponent implements OnInit, OnDestroy {
   private getUserName: Subscription;
 
   constructor(
-    public allPostService: AllPostsService
+    public allPostService: AllPostsService,
+    public mainPageService: MainPageService
   ) { }
 
   ngOnInit(): void {
     this.getAllPostSubscrition = this.allPostService.getAllPosts().subscribe(data => {
       data.forEach(value => {
-        this.getUserName = this.allPostService.getUserName(value.uid).subscribe(userName => {
+        this.getUserName = this.mainPageService.getUserData(value.uid).subscribe(userName => {
           value.userName = userName[0].name;
         });
       });

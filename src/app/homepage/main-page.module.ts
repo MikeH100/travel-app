@@ -22,6 +22,7 @@ import { TrendingPageComponent } from './trending-page/trending-page.component';
 import { AllPostPageComponent } from './all-post-page/all-post-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { UserPageHeaderComponent } from './user-page/user-page-header/user-page-header.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserPageComponent } from './user-page/user-page.component';
     PostPageComponent,
     TrendingPageComponent,
     AllPostPageComponent,
-    UserPageComponent
+    UserPageComponent,
+    UserPageHeaderComponent
   ],
   imports: [
     CommonModule,

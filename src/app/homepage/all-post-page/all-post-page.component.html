@@ -1,7 +1,7 @@
 <div *ngFor="let post of allPosts;" class="post">
   <mat-card>
     <mat-card-header>
-      <mat-card-title class="post-title"><a [routerLink]="['/homepage/user']" [state]="{ orderId: post.uid }">{{post.userName}}</a></mat-card-title>
+      <mat-card-title class="post-title"><a [routerLink]="['/homepage/user']" [state]="{ userId: post.uid }">{{post.userName}}</a></mat-card-title>
     </mat-card-header>
     <mat-card-content>
       {{post.postContent}}

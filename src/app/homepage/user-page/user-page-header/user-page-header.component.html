@@ -1,0 +1,16 @@
+<div class="header">
+  <mat-card class="profile">
+    {{ userData.name }}
+    <strong>{{followerCount}}</strong> followers
+    <strong>{{followingCount}}</strong> following
+    <button mat-button (click)="toggleFollow()">
+      <span *ngIf="isFollowingUser(); then unfollowButton else followButton"></span>
+      <ng-template #followButton>
+        Follow
+      </ng-template>
+      <ng-template #unfollowButton>
+        Unfollow
+      </ng-template>
+    </button>
+  </mat-card>
+</div>
