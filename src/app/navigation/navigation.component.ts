@@ -38,11 +38,8 @@ export class NavigationComponent implements OnInit {
     );
     this.links.push(
       { text: 'Homepage', path: 'homepage' },
-      { text: 'Follow page', path: 'homepage/follow' },
-      { text: 'Post page', path: 'homepage/post' },
-      { text: 'Trending page', path: 'homepage/trending' },
-      { text: 'All posts page', path: 'homepage/all-posts' },
-
+      { text: 'Post', path: 'homepage/post' },
+      { text: 'Trending topics', path: 'homepage/trending' },
     );
   }
 

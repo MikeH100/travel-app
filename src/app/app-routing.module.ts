@@ -21,14 +21,6 @@ export const appRoutes: Routes = [
       title: 'Homepage',
     }
   },
-  {
-    path: 'follow',
-    loadChildren: 'src/app/homepage/main-page.module#MainpageModule',
-    canActivate: [AngularFireAuthGuard],
-    data: {
-      title: 'Follow page',
-    }
-  },
   { path: '**',
     component: PageNotFoundComponent
   }

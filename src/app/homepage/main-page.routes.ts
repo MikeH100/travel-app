@@ -12,7 +12,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 export const mainpageRoutes: Routes = [
   {
     path: '',
-    component: HomepageScreenComponent,
+    component: AllPostPageComponent,
     canActivate: [AngularFireAuthGuard],
     data: {
       title: 'Homepage',
@@ -24,14 +24,6 @@ export const mainpageRoutes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: {
       title: 'Profile',
-    }
-  },
-  {
-    path: 'follow',
-    component: FollowerPageComponent,
-    canActivate: [AngularFireAuthGuard],
-    data: {
-      title: 'Follow',
     }
   },
   {
@@ -48,14 +40,6 @@ export const mainpageRoutes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: {
       title: 'Trending page',
-    }
-  },
-  {
-    path: 'all-posts',
-    component: AllPostPageComponent,
-    canActivate: [AngularFireAuthGuard],
-    data: {
-      title: 'all posts page',
     }
   },
   {
