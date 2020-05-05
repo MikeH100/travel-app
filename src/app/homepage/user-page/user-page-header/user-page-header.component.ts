@@ -34,23 +34,24 @@ export class UserPageHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.userDetails;
-
-    this.userData = this.mainPageService.getUserData(this._uid).subscribe(data => {
-      this.userData = data[0];
-    });
-
-    this.userPageService.getFollowers(this._uid).subscribe(data => {
-      const followers = [];
-      data.forEach(value => {
-        followers.push(value.followerId);
+    if(this._uid !== undefined) {
+      this.userData = this.mainPageService.getUserData(this._uid).subscribe(data => {
+        this.userData = data[0];
       });
-      this.followers = followers;
-      this.followerCount = this.followers.length;
-    });
 
-    this.userPageService.getFollowedUsers(this._uid).subscribe(data => {
-      this.followingCount = data.length;
-    });
+      this.userPageService.getFollowers(this._uid).subscribe(data => {
+        const followers = [];
+        data.forEach(value => {
+          followers.push(value.followerId);
+        });
+        this.followers = followers;
+        this.followerCount = this.followers.length;
+      });
+
+      this.userPageService.getFollowedUsers(this._uid).subscribe(data => {
+        this.followingCount = data.length;
+      });
+    }
   }
 
   public isFollowingUser() {

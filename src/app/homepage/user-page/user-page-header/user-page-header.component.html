@@ -1,6 +1,6 @@
-<div class="header">
-  <mat-card class="profile">
-    {{ userData.name }}
+<div class="header" *ngIf="_uid !== undefined">
+  <mat-card class="profile" >
+    {{ userData?.name }}
     <strong>{{followerCount}}</strong> followers
     <strong>{{followingCount}}</strong> following
     <button mat-button (click)="toggleFollow()">
