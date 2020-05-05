@@ -1,3 +1,18 @@
-<mat-action-list *ngFor="let topic of trendingTopics; let i = index">
-  <button mat-list-item (click)="showPostWithTag(topic.tag)">{{i + 1}} {{topic.tag}}</button>
-</mat-action-list>
+<span *ngIf="postsByTag.length === 0; then showTrendingTopics else showPostsByTags"></span>
+<ng-template #showTrendingTopics>
+  <mat-action-list *ngFor="let topic of trendingTopics; let i = index">
+    <button mat-list-item (click)="showPostWithTag(topic.tag)">{{i + 1}} {{topic.tag}}</button>
+  </mat-action-list>
+</ng-template>
+
+<ng-template #showPostsByTags>
+  <button mat-button (click)="backButton()">Back</button>
+  <div *ngFor="let post of postsByTag;" class="post">
+    <mat-card>
+      {{post.postContent}}
+      <mat-card-footer>
+        <mat-card-subtitle class="tag">{{post.tag}}</mat-card-subtitle>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</ng-template>
