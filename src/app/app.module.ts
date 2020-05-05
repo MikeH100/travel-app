@@ -19,6 +19,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +30,7 @@ import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     PageNotFoundComponent,
     HeaderComponent,
     NavigationComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatMenuModule,
     MatFormFieldModule,
     MatCardModule,
+    MatDialogModule,
+    MatListModule,
     BrowserAnimationsModule,
     FormsModule,
     MatSidenavModule,

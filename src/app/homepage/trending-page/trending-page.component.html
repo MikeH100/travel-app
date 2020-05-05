@@ -1,3 +1,3 @@
 <mat-action-list *ngFor="let topic of trendingTopics; let i = index">
-  <button mat-list-item>{{i + 1}} {{topic.tag}}</button>
+  <button mat-list-item (click)="showPostWithTag(topic.tag)">{{i + 1}} {{topic.tag}}</button>
 </mat-action-list>

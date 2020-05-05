@@ -3,6 +3,8 @@ import { MainPageService } from '../../main-page.service';
 import { AuthService } from '../../../auth/auth.service';
 import { UserPageService } from '../service/user-page.service'
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../../../dialog/dialog.component';
 
 @Component({
   selector: 'app-user-page-header',
@@ -15,12 +17,15 @@ export class UserPageHeaderComponent implements OnInit {
 
   public users: any;
   public currentUser: any;
+  public userNames = [];
   public followerCount: number;
   public followingCount: number;
   public isFollowing: boolean;
   public followers = [];
+  public following = [];
   private followingSubscription: Subscription;
   private followerSubscription: Subscription;
+  private getUserName: Subscription;
 
   @Input()
   public set uid(value: string) {
@@ -30,6 +35,7 @@ export class UserPageHeaderComponent implements OnInit {
     public authService: AuthService,
     public userPageService: UserPageService,
     public mainPageService: MainPageService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +55,11 @@ export class UserPageHeaderComponent implements OnInit {
       });
 
       this.userPageService.getFollowedUsers(this._uid).subscribe(data => {
+        const following = [];
+        data.forEach(value => {
+          following.push(value.followedId);
+        });
+        this.following = following;
         this.followingCount = data.length;
       });
     }
@@ -84,4 +95,31 @@ export class UserPageHeaderComponent implements OnInit {
     }
   }
 
+  public getUserNames(userArray) {
+    return new Promise((resolve) =>{
+      userArray.forEach((value, index, array) => {
+        this.getUserName = this.mainPageService.getUserData(value).subscribe(userName => {
+          this.userNames.push(userName[0].name);
+          if (index === array.length -1) resolve();
+        });
+
+      });
+    });
+  }
+
+  public openDialog(userArray): void {
+    this.getUserNames(userArray).then(() => {
+      this.getUserName.unsubscribe();
+      const dialogRef = this.dialog.open(DialogComponent, {
+        width: '250px',
+        data: {
+          data: this.userNames,
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.userNames = [];
+      });
+    });
+  }
 }

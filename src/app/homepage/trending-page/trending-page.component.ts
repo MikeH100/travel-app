@@ -8,6 +8,7 @@ import { MainPageService } from '../main-page.service';
 })
 export class TrendingPageComponent implements OnInit {
   public trendingTopics: any;
+  public postsByTag: any;
 
   constructor(
     private mainPageService: MainPageService
@@ -18,6 +19,11 @@ export class TrendingPageComponent implements OnInit {
       this.trendingTopics = data;
     });
   }
-
+  public showPostWithTag(tag: string): void {
+    this.mainPageService.getPostForSelectedTag(tag).subscribe(postData => {
+      console.log(postData);
+    });
+    console.log("tag", tag);
+  }
 
 }

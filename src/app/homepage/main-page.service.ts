@@ -48,4 +48,13 @@ export class MainPageService {
       })
     );
   }
+
+  public getPostForSelectedTag(tag: string): Observable<any> {
+    return this.firestore.collection('posts', ref => ref.where('tag', '==', tag)).valueChanges().pipe(
+      catchError(err => { throw new Error(err.error); }),
+      map((resp) => {
+        return resp;
+      })
+    );
+  }
 }

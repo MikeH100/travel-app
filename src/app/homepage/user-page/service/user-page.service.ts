@@ -71,7 +71,7 @@ export class UserPageService {
         resolve(data);
       }).catch((error) => {
         reject(error);
-      });;
+      });
     });
   }
 }

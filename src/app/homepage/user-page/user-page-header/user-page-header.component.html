@@ -1,8 +1,12 @@
 <div class="header" *ngIf="_uid !== undefined">
   <mat-card class="profile" >
     {{ userData?.name }}
-    <strong>{{followerCount}}</strong> followers
-    <strong>{{followingCount}}</strong> following
+    <button mat-button (click)="openDialog(followers)">
+      <strong>{{followerCount}}</strong> followers
+    </button>
+    <button mat-button (click)="openDialog(following)">
+      <strong>{{followingCount}}</strong> following
+    </button>
     <button mat-button (click)="toggleFollow()">
       <span *ngIf="isFollowingUser(); then unfollowButton else followButton"></span>
       <ng-template #followButton>
