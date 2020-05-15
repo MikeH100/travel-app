@@ -11,6 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ProfilePageComponent implements OnInit {
   private currentUserId: string;
   private userName: string;
+  private userData: any;
 
   public userForm = new FormGroup({
     userName: new FormControl(''),
@@ -23,9 +24,18 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserId = this.authService.userDetails.uid;
+    this.getProfileData();
   }
 
-  public onSubmit() {
+  public getProfileData(): void {
+    this.mainPageService.getProfileData(this.currentUserId).subscribe(userData => {
+      this.userData = userData;
+      this.userName = userData?.userName
+    });
+  }
+
+
+  public onSubmit(): void {
     this.mainPageService.postProfileDataFirebase(this.currentUserId, this.userName).then((result) => {});
   }
 }

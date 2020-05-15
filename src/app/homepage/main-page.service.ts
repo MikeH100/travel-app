@@ -70,4 +70,14 @@ export class MainPageService {
         });
     });
   }
+
+  public getProfileData(userId: string): Observable<any> {
+    return this.firestore.collection('users').doc(userId).valueChanges().pipe(
+      catchError(err => { throw new Error(err.error); }),
+      map((resp) => {
+        return resp;
+      })
+    );
+  }
+
 }
