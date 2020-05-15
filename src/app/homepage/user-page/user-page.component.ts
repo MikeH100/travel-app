@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
 })
 export class UserPageComponent implements OnInit {
   public uid: string;
-  private getDocumentIdUserSubscribtion: Subscription;
   public currentUserPostData: any;
 
   constructor(
@@ -33,15 +32,8 @@ export class UserPageComponent implements OnInit {
 
 
   public getPostsSelectedUser(): void {
-    this.getDocumentIdUserSubscribtion = this.mainPageService.getDocumentIdUser(this.uid).subscribe(data => {
-      if(data.length !== 0) {
-        data.forEach(value => {
-          this.mainPageService.getPostForSelectedUser(value.payload.doc.id).subscribe(postData => {
-            this.currentUserPostData = postData;
-          });
-        });
-        this.getDocumentIdUserSubscribtion.unsubscribe();
-      }
+    this.mainPageService.getPostForSelectedUser(this.uid).subscribe(postData => {
+      this.currentUserPostData = postData;
     });
   }
 }

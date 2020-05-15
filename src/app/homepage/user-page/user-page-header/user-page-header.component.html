@@ -1,6 +1,6 @@
 <div class="header" *ngIf="_uid !== undefined">
   <mat-card class="profile" >
-    {{ userData?.name }}
+    {{ userName }}
     <button mat-button (click)="openDialog(followers)">
       <strong>{{followerCount}}</strong> followers
     </button>

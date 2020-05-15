@@ -34,10 +34,9 @@ export class AuthService {
       if (result.additionalUserInfo.isNewUser) {
         return new Promise<any>((resolve, reject) =>{
           this.firestore
-          .collection('users')
-          .add({
+          .collection('users').doc(result.user.uid)
+          .set({
             name: result.user.displayName,
-            uid: result.user.uid
           })
           .then((resultFromDb) => {
             resolve(resultFromDb);

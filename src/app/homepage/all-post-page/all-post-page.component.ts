@@ -20,8 +20,8 @@ export class AllPostPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllPostSubscrition = this.allPostService.getAllPosts().subscribe(data => {
       data.forEach(value => {
-        this.getUserName = this.mainPageService.getUserData(value.uid).subscribe(userName => {
-          value.userName = userName[0].name;
+        this.getUserName = this.mainPageService.getProfileData(value.uid).subscribe(profileData => {
+          value.userName = profileData.userName ? profileData.userName : profileData.name;
         });
       });
       this.allPosts = data;

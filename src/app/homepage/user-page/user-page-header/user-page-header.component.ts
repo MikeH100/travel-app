@@ -13,7 +13,7 @@ import { DialogComponent } from '../../../dialog/dialog.component';
 })
 export class UserPageHeaderComponent implements OnInit {
   public _uid: string;
-  public userData: any;
+  public userName: any;
 
   public users: any;
   public currentUser: any;
@@ -41,8 +41,8 @@ export class UserPageHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.authService.userDetails;
     if(this._uid !== undefined) {
-      this.userData = this.mainPageService.getUserData(this._uid).subscribe(data => {
-        this.userData = data[0];
+      this.mainPageService.getProfileData(this._uid).subscribe(profileData => {
+        this.userName = profileData.userName ? profileData.userName : profileData.name;;
       });
 
       this.userPageService.getFollowers(this._uid).subscribe(data => {
@@ -98,8 +98,8 @@ export class UserPageHeaderComponent implements OnInit {
   public getUserNames(userArray) {
     return new Promise((resolve) =>{
       userArray.forEach((value, index, array) => {
-        this.getUserName = this.mainPageService.getUserData(value).subscribe(userName => {
-          this.userNames.push(userName[0].name);
+        this.getUserName = this.mainPageService.getProfileData(value).subscribe(profileData => {
+          this.userNames.push(profileData.userName ? profileData.userName : profileData.name);
           if (index === array.length -1) resolve();
         });
 

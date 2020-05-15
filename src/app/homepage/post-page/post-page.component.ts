@@ -15,7 +15,6 @@ export class PostPageComponent implements OnInit {
   public postContent = '';
   public tagField = '';
   public currentUser: any;
-  private getDocumentIdSubscribtion: Subscription;
   public currentPostData = [];
   public postForm = new FormGroup({
     postContent: new FormControl(''),
@@ -36,26 +35,11 @@ export class PostPageComponent implements OnInit {
   public onSubmit(): void {
     this.postPageservice.postContentToFirebase(this.postContent, this.tagField, this.currentUser.uid);
     this.postPageservice.postTagToFirebase(this.tagField, this.currentUser.uid);
-    this.getDocumentIdSubscribtion = this.maingPageService.getDocumentIdUser(this.currentUser.uid).subscribe(data => {
-      if(data.length !== 0) {
-        data.forEach(value => {
-          this.postPageservice.postContentToFirebase(this.postContent, this.tagField, this.currentUser.uid, value.payload.doc.id);
-        });
-        this.getDocumentIdSubscribtion.unsubscribe();
-      }
-    });
   }
 
   public getPostsCurrentUser(): void {
-    this.getDocumentIdSubscribtion = this.maingPageService.getDocumentIdUser(this.currentUser.uid).subscribe(data => {
-      if(data.length !== 0) {
-        data.forEach(value => {
-          this.postPageservice.getPostForCurrentUser(value.payload.doc.id).subscribe(postData => {
-            this.currentPostData = postData;
-          });
-        });
-        this.getDocumentIdSubscribtion.unsubscribe();
-      }
+    this.postPageservice.getPostForCurrentUser(this.currentUser.uid).subscribe(postData => {
+      this.currentPostData = postData;
     });
   }
 }

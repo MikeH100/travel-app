@@ -13,19 +13,13 @@ export class PostPageService {
     private firestore: AngularFirestore
   ) { }
 
-  public postContentToFirebase(postContent: string, tag: string, userId?: string, docId?: string) {
+  public postContentToFirebase(postContent: string, tag: string, userId: string) {
     return new Promise<any>((resolve, reject) =>{
-      if(docId) {
-        this.firestore
-        .collection('users').doc(docId).collection('posts').add({
-          postContent,
-          tag
-        }).then((result) => {
-          resolve(result)
-        }).catch((error) => {
-          reject(error);
-        });
-      } else {
+      this.firestore
+      .collection('users').doc(userId).collection('posts').add({
+        postContent,
+        tag
+      }).then(() => {
         this.firestore
         .collection('posts').add({
           postContent,
@@ -36,7 +30,9 @@ export class PostPageService {
         }).catch((error) => {
           reject(error);
         });
-      }
+      }).catch((error) => {
+        reject(error);
+      });
     });
   }
 

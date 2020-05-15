@@ -21,27 +21,8 @@ export class MainPageService {
     );;
   }
 
-  public getDocumentIdUser(userId: string): Observable<any> {
-    return this.firestore
-    .collection('users', ref => ref.where('uid', '==', userId )).snapshotChanges().pipe(
-      catchError(err => { throw new Error(err.error); }),
-      map((resp) => {
-        return resp;
-      })
-    );
-  }
-
   public getPostForSelectedUser(docId: string): Observable<any> {
     return this.firestore.collection('users').doc(docId).collection('posts').valueChanges().pipe(
-      catchError(err => { throw new Error(err.error); }),
-      map((resp) => {
-        return resp;
-      })
-    );
-  }
-
-  public getUserData(uid: string): Observable<any> {
-    return this.firestore.collection('users', ref => ref.where('uid', '==', uid)).valueChanges().pipe(
       catchError(err => { throw new Error(err.error); }),
       map((resp) => {
         return resp;
