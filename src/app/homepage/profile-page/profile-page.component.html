@@ -1,13 +1,23 @@
 <div class="user-profile">
   <img [src]="authService.userDetails.photoURL">
 
-  <mat-form-field appearance="fill">
-    <mat-label>{{authService.userDetails.displayName}}</mat-label>
-    <input [disabled]="true" matInput>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>{{authService.userDetails.email}}</mat-label>
-    <input [disabled]="true" matInput>
-  </mat-form-field>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="userForm">
+    <mat-form-field appearance="fill">
+      <mat-label>{{authService.userDetails.displayName}}</mat-label>
+      <input [disabled]="true" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>{{authService.userDetails.email}}</mat-label>
+      <input [disabled]="true" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input required formControlName="userName" [(ngModel)]="userName" matInput>
+    </mat-form-field>
+
+    <button type="submit" [disabled]="!userForm.valid" mat-flat-button color="primary">Submit</button>
+  </form>
+
 </div>

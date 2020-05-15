@@ -57,4 +57,17 @@ export class MainPageService {
       })
     );
   }
+
+  public postProfileDataFirebase(userId: string, userName: string): Promise<any>  {
+    return new Promise<any>((resolve, reject) =>{
+        this.firestore
+        .collection('users').doc(userId).set({
+          userName,
+        }, { merge: true }).then((result) => {
+          resolve(result)
+        }).catch((error) => {
+          reject(error);
+        });
+    });
+  }
 }
