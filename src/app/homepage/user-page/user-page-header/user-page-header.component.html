@@ -1,4 +1,6 @@
 <div class="header" *ngIf="_uid !== undefined">
+  <img class="user-banner" src="../../../../assets/banner.jpg">
+
   <mat-card class="profile" >
     {{ userName }}
     <button mat-button (click)="openDialog(followers)">
