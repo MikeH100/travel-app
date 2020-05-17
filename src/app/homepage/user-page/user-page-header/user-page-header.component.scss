@@ -1,5 +1,15 @@
 .header {
   margin: -20px;
+  margin-bottom: 20px;
+  position: relative;
+
+  .username {
+    font-size: 20px;
+    color: var(--main-color);
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+  }
 
   .mat-card {
     height: 80px;
@@ -8,6 +18,30 @@
     height: 240px;
     width: 100%;
     background-size: cover;
+  }
+
+  .profile {
+    background-color: var(--white);
+    height: 50px;
+    border-top: 1px solid var(--main-color);
+    margin-top: -4px;
+    position: relative;
+
+    .follow-button {
+      position: absolute;
+      top: 8px;
+      right: 20px;
+    }
+  }
+
+  .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+
+    .count {
+      color: var(--main-color);
+    }
   }
 }
 

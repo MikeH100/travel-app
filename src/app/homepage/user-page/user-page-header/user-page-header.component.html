@@ -1,15 +1,21 @@
 <div class="header" *ngIf="_uid !== undefined">
   <img class="user-banner" src="../../../../assets/banner.jpg">
 
-  <mat-card class="profile" >
-    {{ userName }}
+  <div class="profile" >
+    <span class="username">{{ userName }}</span>
     <button mat-button (click)="openDialog(followers)">
-      <strong>{{followerCount}}</strong> followers
+      <span class="text-wrapper">
+        <strong class="count">{{followerCount}}</strong>
+        <span>followers</span>
+      </span>
     </button>
     <button mat-button (click)="openDialog(following)">
-      <strong>{{followingCount}}</strong> following
+      <span class="text-wrapper">
+        <strong class="count">{{followingCount}}</strong>
+        <span>following</span>
+      </span>
     </button>
-    <button mat-button (click)="toggleFollow()">
+    <button class="follow-button" mat-stroked-button color="primary" (click)="toggleFollow()">
       <span *ngIf="isFollowingUser(); then unfollowButton else followButton"></span>
       <ng-template #followButton>
         Follow
@@ -18,5 +24,5 @@
         Unfollow
       </ng-template>
     </button>
-  </mat-card>
+  </div>
 </div>
