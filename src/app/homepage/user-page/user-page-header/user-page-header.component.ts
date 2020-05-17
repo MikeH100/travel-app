@@ -42,7 +42,7 @@ export class UserPageHeaderComponent implements OnInit {
     this.currentUser = this.authService.userDetails;
     if(this._uid !== undefined) {
       this.mainPageService.getProfileData(this._uid).subscribe(profileData => {
-        this.userName = profileData.userName ? profileData.userName : profileData.name;;
+        this.userName = profileData.userName ? profileData.userName : profileData.name;
       });
 
       this.userPageService.getFollowers(this._uid).subscribe(data => {

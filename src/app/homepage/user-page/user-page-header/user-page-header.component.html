@@ -2,19 +2,24 @@
   <img class="user-banner" src="../../../../assets/banner.jpg">
 
   <div class="profile" >
-    <span class="username">{{ userName }}</span>
-    <button mat-button (click)="openDialog(followers)">
-      <span class="text-wrapper">
-        <strong class="count">{{followerCount}}</strong>
-        <span>followers</span>
-      </span>
-    </button>
-    <button mat-button (click)="openDialog(following)">
-      <span class="text-wrapper">
-        <strong class="count">{{followingCount}}</strong>
-        <span>following</span>
-      </span>
-    </button>
+    <div class="profile-image">
+      <img [src]="authService.userDetails.photoURL">
+    </div>
+    <div class="follow-buttons">
+      <span class="username">{{ userName }}</span>
+      <button mat-button (click)="openDialog(followers)">
+        <span class="text-wrapper">
+          <strong class="count">{{followerCount}}</strong>
+          <span>followers</span>
+        </span>
+      </button>
+      <button mat-button (click)="openDialog(following)">
+        <span class="text-wrapper">
+          <strong class="count">{{followingCount}}</strong>
+          <span>following</span>
+        </span>
+      </button>
+    <div>
     <button class="follow-button" mat-stroked-button color="primary" (click)="toggleFollow()">
       <span *ngIf="isFollowingUser(); then unfollowButton else followButton"></span>
       <ng-template #followButton>
